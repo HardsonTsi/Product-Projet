@@ -1,11 +1,13 @@
-package com.hardtech.productservice.entity;
+package com.hardtech.orderservice.entities;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @DynamicUpdate
@@ -13,22 +15,20 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Product {
+@Entity
+public class OrderLineItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @NotBlank
-    String name;
-    @Size(min = 1, max = 255)
-    String description;
+    String skuCode;
     @Min(100)
-    @Max(1000000)
-    @NotNull
     BigDecimal price;
-    @Enumerated(EnumType.STRING)
+    @Min(1)
     @NotNull
-    Category category;
+    Integer quantity;
+    @ManyToOne
+    Order order;
 }
