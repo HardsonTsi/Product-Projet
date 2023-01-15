@@ -9,4 +9,5 @@
     </parent>
     <artifactId>inventory-service</artifactId>
     <description>Inventory service</description>
+
 </project>

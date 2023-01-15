@@ -9,13 +9,14 @@
     </parent>
     <artifactId>product-service</artifactId>
     <description>Product service</description>
-    <build>
+
+ <!--   <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 </project>

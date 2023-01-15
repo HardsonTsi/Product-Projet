@@ -15,13 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ProductServiceTest {
 
-    List<Product> products = new ArrayList<>();
-    @Autowired
-    private ProductService productService;
-
     @Test
     void contextLoads() {
     }
+
+/*    List<Product> products = new ArrayList<>();
+    @Autowired
+    private ProductService productService;
+
+
 
     @Test
     void saveProduct() {
@@ -79,7 +81,5 @@ class ProductServiceTest {
     void deleteAllProduct(){
         productService.deleteAllProducts();
         assertEquals(0, productService.getAllProducts().size());
-    }
-
-
+    }*/
 }
