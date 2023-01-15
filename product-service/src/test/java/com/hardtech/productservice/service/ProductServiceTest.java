@@ -47,17 +47,6 @@ class ProductServiceTest {
         assertNull(p);
     }
 
-    @Test
-    void deleteAllProduct() {
-        productService.deleteAllProducts();
-        assertEquals(0, productService.getAllProducts().size());
-    }
-
-    @Test
-    void deleteProductById() {
-        assertEquals("Product " + 50L + " deleted", productService.deleteProductById(50L));
-        assertEquals("Product " + 55L + " not found", productService.deleteProductById(55L));
-    }
 
     @Test
     void getByNameLike() {
@@ -79,5 +68,18 @@ class ProductServiceTest {
     void getByPriceLessThanEqual() {
         assertEquals(0, productService.getByPriceLessThanEqual(BigDecimal.valueOf(100)).size());
     }
+
+    @Test
+    void deleteProductById() {
+        assertEquals("Product " + 50L + " deleted", productService.deleteProductById(50L));
+        assertEquals("Product " + 55L + " not found", productService.deleteProductById(55L));
+    }
+
+    @Test
+    void deleteAllProduct(){
+        productService.deleteAllProducts();
+        assertEquals(0, productService.getAllProducts().size());
+    }
+
 
 }
