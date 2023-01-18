@@ -16,7 +16,7 @@ public class InventoryServiceApplication {
                 .forEach(inventoryName -> {
                     Inventory inventory = Inventory.builder()
                             .skuCode(inventoryName)
-                            .quantity(new Random().nextInt())
+                            .quantity(new Random().nextInt(0, 200))
                             .build();
                     inventoryRepository.save(inventory);
                 });

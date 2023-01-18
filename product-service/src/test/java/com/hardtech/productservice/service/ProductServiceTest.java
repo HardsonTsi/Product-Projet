@@ -1,16 +1,7 @@
 package com.hardtech.productservice.service;
 
-import com.hardtech.productservice.entity.Category;
-import com.hardtech.productservice.entity.Product;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProductServiceTest {
