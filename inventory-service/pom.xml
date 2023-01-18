@@ -9,5 +9,10 @@
     </parent>
     <artifactId>inventory-service</artifactId>
     <description>Inventory service</description>
-
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
 </project>
