@@ -7,9 +7,18 @@
         <groupId>com.hardtech</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>product-service</artifactId>
-    <description>Product service</description>
+    <groupId>com.hardtech</groupId>
+    <artifactId>api-gateway</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Api Gateway</name>
+    <properties>
+        <java.version>18</java.version>
+    </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

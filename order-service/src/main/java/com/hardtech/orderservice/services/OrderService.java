@@ -44,7 +44,6 @@ public class OrderService {
         } else {
             throw new IllegalArgumentException("Product is not in stock, please try again later");
         }
-
         return "Order placed Successfuly";
     }
 
