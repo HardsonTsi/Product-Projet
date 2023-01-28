@@ -41,10 +41,11 @@ public class OrderService {
         if (allProductsInStock) {
             orderRepository.save(order);
             log.info("Order is saved");
+            return "Order placed Successfuly";
         } else {
             throw new IllegalArgumentException("Product is not in stock, please try again later");
         }
-        return "Order placed Successfuly";
+
     }
 
 }
