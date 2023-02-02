@@ -3,11 +3,11 @@ package com.hardtech.orderservice.services;
 import com.hardtech.orderservice.dto.InventoryResponse;
 import com.hardtech.orderservice.entities.Order;
 import com.hardtech.orderservice.entities.OrderLineItem;
+import com.hardtech.orderservice.event.OrderPlacedEvent;
 import com.hardtech.orderservice.repositories.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.sleuth.Span;
-import org.springframework.cloud.sleuth.Tracer;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,6 +24,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
+    private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
     public String placeOrder(Order order) {
         order.setOrderNumbers(UUID.randomUUID().toString());
@@ -43,6 +44,7 @@ public class OrderService {
         boolean allProductsInStock = Arrays.stream(inventoryResponses).allMatch(InventoryResponse::isInStock);
 
         if (allProductsInStock) {
+            kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumbers()));
             orderRepository.save(order);
             log.info("Order is saved");
             return "Order placed Successfuly";
